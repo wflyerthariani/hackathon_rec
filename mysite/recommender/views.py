@@ -49,6 +49,13 @@ def get_info(request):
                     max_val = row[0]
                     max_sim = sim
             print(max_val)
-        return redirect('index')
+        return redirect('/recommender/itemview/'+str(max_val))
     context = {}
     return render(request, "recommender/ask.html", context)
+
+def item_info(request, idinp):
+    context = {}
+    item = Item.objects.get(id=idinp)
+    context["name"] = item.item_name
+    context["image"] = item.item_image
+    return render(request, "recommender/iteminfo.html", context)
