@@ -20,5 +20,4 @@ def load_data(request):
                 if len(Item.objects.filter(item_name = row[13])) == 0:
                     Item.objects.create(item_name = row[13], item_image = row[9])
             line_count += 1
-        print(f'Processed {line_count} lines.')
     return redirect(index)
